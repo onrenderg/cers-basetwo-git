@@ -54,37 +54,30 @@ GO
 exec dbo.CreateEmployWithData @EmpName = 'John Doe', @EmpNumber = 1234567890;
 
 
+drop table dbo.employ
 
---@block 
-CREATE OR ALTER PROCEDURE dbo.CreateEmployWithData
+CREATE TABLE dbo.employ (
+    ID INT IDENTITY(1,1) PRIMARY KEY,
+    EmpName NVARCHAR(100) NOT NULL,
+    EmpNumber INT NOT NULL
+);
+
+
+CREATE OR ALTER PROCEDURE [dbo].[CreateEmployWithData]
     @EmpName NVARCHAR(100),
     @EmpNumber INT
 AS
 BEGIN
     SET NOCOUNT ON;
 
-    IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = 'employ')
-    BEGIN
-        CREATE TABLE dbo.employ (
-            ID INT IDENTITY(1,1) PRIMARY KEY,
-            EmpName NVARCHAR(100) NOT NULL,
-            EmpNumber INT NOT NULL
-        );
-    END
-
     INSERT INTO dbo.employ (EmpName, EmpNumber)
     VALUES (@EmpName, @EmpNumber);
-END;
-
-
-
-exec dbo.CreateEmployWithData @EmpName = 'John Doe', @EmpNumber = 1234567890;
-
-
-
+END
 
 
 exec dbo.CreateEmployWithData @EmpName = 'John Doe', @EmpNumber = 1234567890;
+
+select * from   dbo.employ
 
 use secExpense
 
