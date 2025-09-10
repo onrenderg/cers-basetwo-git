@@ -47,3 +47,23 @@ sqlcmd -S ROYAL-NIC-6F\SQLEXPRESS -U sa -P YourStrongPasswordHere -Q "CREATE DAT
 
 -- Create sec schema in secExpense database
 sqlcmd -S ROYAL-NIC-6F\SQLEXPRESS -U sa -P YourStrongPasswordHere -d secExpense -Q "CREATE SCHEMA sec;"
+
+
+# Static port ip 
+
+
+SQLServerManager15.msc
+
+net stop MSSQL$SQLEXPRESS
+net start MSSQL$SQLEXPRESS
+
+
+
+
+ip 10.146.2.78
+port 1433 
+usrn: sa
+pass: YourStrongPasswordHere
+
+mssql://sa:YourStrongPassword@ROYAL-NIC-6F/SQLEXPRESS?encrypt=true&trustServerCertificate=true
+
