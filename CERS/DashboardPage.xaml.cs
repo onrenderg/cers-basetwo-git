@@ -246,19 +246,21 @@ namespace CERS
             {
                 DateTime currentdate = DateTime.Now;
                 userDetails = userDetailsDatabase.GetUserDetails("Select * from UserDetails").ToList();
+                // mogogo
                 DateTime resultdateadd30;
                 try
                 {
                     resultdateadd30 = DateTime.Parse(userDetails.ElementAt(0).Resultdatethirtydays);
-                    if (currentdate >= resultdateadd30)
-                    {
-                        await DisplayAlert(App.GetLabelByKey("AppName"), App.GetLabelByKey("expensedateover"), App.Btn_Close);
-                    }
-                    else
-                    {
+                    // mgogo
+                    // if (currentdate >= resultdateadd30)
+                    // {
+                    //     await DisplayAlert(App.GetLabelByKey("AppName"), App.GetLabelByKey("expensedateover"), App.Btn_Close);
+                    // }
+                    // else
+                    // {
                         Preferences.Set("Active", 1);
                         Application.Current.MainPage = new NavigationPage(new AddExpenditureDetailsPage());
-                    }
+                    // }
                 }
                 catch
                 {
@@ -306,15 +308,16 @@ namespace CERS
                 try
                 {
                     resultdateadd30 = DateTime.Parse(userDetails.ElementAt(0).Resultdatethirtydays);
-                    if (currentdate >= resultdateadd30)
-                    {
-                        await DisplayAlert(App.GetLabelByKey("AppName"), App.GetLabelByKey("expensedateover"), App.Btn_Close);
-                    }
-                    else
-                    {
+                    // mgogo
+                    // if (currentdate >= resultdateadd30)
+                    // {
+                    //     await DisplayAlert(App.GetLabelByKey("AppName"), App.GetLabelByKey("expensedateover"), App.Btn_Close);
+                    // }
+                    // else
+                    // {
                         Preferences.Set("Active", 1);
                         Application.Current.MainPage = new NavigationPage(new AddExpenditureDetailsPage());
-                    }
+                    // }
                 }
                 catch
                 {

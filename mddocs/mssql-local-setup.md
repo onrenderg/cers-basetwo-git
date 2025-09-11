@@ -67,3 +67,9 @@ pass: YourStrongPasswordHere
 
 mssql://sa:YourStrongPassword@ROYAL-NIC-6F/SQLEXPRESS?encrypt=true&trustServerCertificate=true
 
+sqlcmd -S ROYAL-NIC-6F\SQLEXPRESS,1433  -U sa -P YourStrongPasswordHere
+
+telnet 10.147.2.78 1433
+
+
+
