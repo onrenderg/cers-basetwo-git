@@ -77,7 +77,7 @@ namespace CERS
             }
             catch
             {
-                await Application.Current.MainPage.DisplayAlert(App.GetLabelByKey("AppName"), "No Email client found on the device", App.Btn_Close);
+                await Application.Current!.MainPage!.DisplayAlert(App.GetLabelByKey("AppName"), "No Email client found on the device", App.Btn_Close);
             }
 
 
@@ -100,7 +100,7 @@ namespace CERS
                 Preferences.Set("Active", 0);
                 Preferences.Set("USEROTPVERIFIED", "N");
                 userDetailsDatabase.DeleteUserDetails();                
-                Application.Current.MainPage = new NavigationPage(new LoginPage());
+                Application.Current!.MainPage = new NavigationPage(new LoginPage());
             }
         }
         private void languageTapped(object sender, EventArgs e)
@@ -111,7 +111,7 @@ namespace CERS
         private void Tab_Home_Tapped(object sender, EventArgs e)
         {
             Preferences.Set("Active", 0);
-            Application.Current.MainPage = new NavigationPage(new DashboardPage());
+            Application.Current!.MainPage = new NavigationPage(new DashboardPage());
         }
 
         private void Tab_New_Tapped(object sender, EventArgs e)
@@ -122,22 +122,23 @@ namespace CERS
             List<UserDetails> userDetails;
             userDetails = userDetailsDatabase.GetUserDetails("Select * from UserDetails").ToList();
             DateTime resultdateadd30 = DateTime.Parse(userDetails.ElementAt(0).Resultdatethirtydays);
-            if (currentdate >= resultdateadd30)
-            {
-                DisplayAlert(App.GetLabelByKey("AppName"), App.GetLabelByKey("expensedateover"), App.Btn_Close);
-            }
-            else
-            {
+            // mgogo
+            // if (currentdate >= resultdateadd30)
+            // {
+            //     DisplayAlert(App.GetLabelByKey("AppName"), App.GetLabelByKey("expensedateover"), App.Btn_Close);
+            // }
+            // else
+            // {
                 Preferences.Set("Active", 1);
-                Application.Current.MainPage = new NavigationPage(new AddExpenditureDetailsPage());
-            }
+                Application.Current!.MainPage = new NavigationPage(new AddExpenditureDetailsPage());
+            // }
 
         }
 
         private void Tab_Settings_Tapped(object sender, EventArgs e)
         {
             Preferences.Set("Active", 2);
-            Application.Current.MainPage = new NavigationPage(new MorePage());
+            Application.Current!.MainPage = new NavigationPage(new MorePage());
 
         }
     }
